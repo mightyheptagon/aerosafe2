@@ -1,0 +1,99 @@
+<div class="container">
+
+  <div>
+    <navbar></navbar>
+  </div>
+  <div>
+    <pref></pref>
+  </div>
+  <div>
+    <incidentdetails></incidentdetails>
+  </div>
+
+  <!-- Map -->
+  <div class="screen-wrapper" ng-controller="MainController as vm" class="ng-scope" id="map-wrapper">
+    <div>
+      <div class="loading-wrapper" ng-show="vm.isLoading">
+        <div class="frame">
+          <div class="plane-container">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1131.53px" height="379.304px" viewbox="0 0 1131.53 379.304" enable-background="new 0 0 1131.53 379.304" xml:space="preserve" class="plane">
+              <polygon fill="#D8D8D8" points="72.008,0 274.113,140.173 274.113,301.804 390.796,221.102 601.682,367.302 1131.53,0.223  " />
+              <polygon fill="#C4C4C3" points="1131.53,0.223 274.113,140.173 274.113,301.804 390.796,221.102   " />
+            </svg>
+          </div>
+        </div>
+        <div class="clouds">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewbox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud big front slowest">
+            <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+              c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+              C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+              S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+          </svg>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewbox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud distant smaller">
+            <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+              c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+              C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+              S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+          </svg>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewbox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud small slow">
+            <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+              c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+              C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+              S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+          </svg>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewbox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud distant super-slow massive">
+            <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+              c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+              C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+              S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+          </svg>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewbox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud slower">
+            <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+              c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+              C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+              S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+          </svg>
+          <p class="loadingtext">Preparing data...</p>
+        </div>
+      </div>
+    </div>
+    <ng-map id="aeromap" zoom="4" center="37.774546, -122.433523" styles="[{'featureType':'administrative.country','elementType':'geometry',
+    'stylers':[{'visibility':'on'}]},{'featureType':'administrative.country','elementType':'geometry.stroke','stylers':[{'visibility':'on'},
+    {'weight':'0.22'}]},{'featureType':'poi','elementType':'all','stylers':[{'visibility':'simplified'}]},{'featureType':'road','elementType':'labels',
+    'stylers':[{'visibility':'simplified'}]},{'featureType':'water','elementType':'all','stylers':[{'visibility':'simplified'}]},{'featureType':'transit',
+    'elementType':'all','stylers':[{'visibility':'simplified'}]},{'featureType':'landscape','elementType':'all','stylers':[{'visibility':'simplified'}]},
+    {'featureType':'road.highway','elementType':'all','stylers':[{'visibility':'off'}]},{'featureType':'road.local','elementType':'all',
+    'stylers':[{'visibility':'on'}]},{'featureType':'road.highway','elementType':'geometry','stylers':[{'visibility':'on'}]},{'featureType':'water',
+    'elementType':'all','stylers':[{'color':'#84afa3'},{'lightness':52}]},{'featureType':'all','elementType':'all','stylers':[{'saturation':-17},
+    {'gamma':0.36}]},{'featureType':'transit.line','elementType':'geometry','stylers':[{'color':'#3f518c'}]}]" disable-default-u-i="true">
+      <!-- heatmap is located here -->
+
+      <div class="incident-impact">
+      </div>
+      <div class="incident-point">
+        <marker id="{{incidentMark.event_identifier}}" visible="{{vm.markerStatus}}" position="{{incidentMark.position}}" ng-repeat="incidentMark in vm.incidentsMark" icon="{{vm.getIcon(incidentMark.approx_loc)}}" on-click="vm.showDetail(incidentMark)">
+        </marker>
+        <info-window id="incident-infoWindow">
+          <div ng-non-bindable="">
+            <p><span class="infoWindow-header">INCIDENT SUMMARY</span></p>
+            <div class="row">
+              <div class="col-md-4">
+                <p><span class="infoWindow-subheader">CASUALTIES</span></p>
+                <p><span class="infoWindow-subheader-content">{{vm.incident.population}}</span></p>
+              </div>
+              <div class="col-md-8">
+                <p><span class="infoWindow-subheader">INCIDENT DATE</span></p>
+                <p><span class="infoWindow-subheader-content">{{vm.incident.event_date}}</span></p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.showDetailNarrative(vm.incident.event_identifier)">
+              View incident details <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <p>This marker represents <strong>{{vm.incident.approx_loc}}</strong> coordinate point.</p>
+          </div>
+        </info-window>
+      </div>
+    </ng-map>
+  </div>
+
+</div>

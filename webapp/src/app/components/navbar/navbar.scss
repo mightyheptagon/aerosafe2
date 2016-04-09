@@ -1,0 +1,38 @@
+.navbar-default {
+    background-color: $grey2 !important;
+    border: none !important;
+}
+
+.navbar {
+    min-height: 40px !important ;
+}
+
+.navbar-brand {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 16px 10px 10px !important;
+    font-size: 15px !important ;
+    line-height: 15px !important ;
+    height: auto !important ;
+}
+
+.navbar-brand img {
+    width: 25px; height: 25px;
+    display: inline;
+    margin-right: 9px;
+    vertical-align: top;
+    margin-top: -6px;
+}
+
+.product-name {
+    font-weight: 700 !important;
+    color: $light2;
+}
+
+sup {
+	letter-spacing: 2px;
+	padding-left: 2px;
+	font-weight: 400;
+	font-size: 0.6em;
+    text-transform: none;
+}

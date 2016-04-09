@@ -1,0 +1,38 @@
+{
+  "name": "ng-maps",
+  "authors": [
+    "Ahmed Ahmed"
+  ],
+  "description": "A google maps directive",
+  "main": "\"./dist/maps.js\"",
+  "moduleType": [],
+  "keywords": [
+    "google",
+    "maps",
+    "angular",
+    "ng-maps"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ahmed-ahmed/ng-maps",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7"
+  },
+  "_release": "ae0e675075",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ae0e67507584f1256dd781dfbd27c09764709a76"
+  },
+  "_source": "git://github.com/ahmed-ahmed/ng-maps.git",
+  "_target": "*",
+  "_originalSource": "ng-map",
+  "_direct": true
+}

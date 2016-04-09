@@ -1,0 +1,83 @@
+<div class="incident-details-wrapper" ng-show="idp.showincidentDetail">
+  <div class="incident-details text-right">
+    <span class="glyphicon glyphicon-remove" ng-click="idp.closeDetail()"></span>
+    <div class="row text-left">
+      <div class="col-md-2">
+        <span class="incident-details-header">
+              Incident Date
+          </span>
+        <span class="incident-details-content">
+              <p>{{idp.idp_incidentDate}}</p>
+          </span>
+        <span class="incident-details-header">
+              Casualties
+          </span>
+        <span class="incident-details-content">
+              <p>{{idp.idp_casualty}}</p>
+          </span>
+        <span class="incident-details-header">
+              Location
+          </span>
+        <span class="incident-details-content">
+              <p>{{idp.idp_incidentLocation}}</p>
+          </span>
+        <span class="incident-details-header">
+              Engine
+          </span>
+        <span class="incident-details-content">
+              <p>{{idp.idp_engine}}</p>
+          </span>
+        <span class="incident-details-header">
+              Make
+          </span>
+        <span class="incident-details-content">
+              <p>{{idp.idp_aircraftMake}}</p>
+          </span>
+        <span class="incident-details-header">
+              Type
+          </span>
+        <span class="incident-details-content">
+              <p>{{idp.idp_flyingType}}</p>
+          </span>
+        <!-- Sumamry -->
+      </div>
+      <div class="col-md-7">
+        <!-- Details -->
+        <span class="incident-details-header">
+              Cause of the incident
+          </span>
+        <span class="incident-details-content">
+              <p class="no-text-transform">{{idp.idp_cause}}</p>
+          </span>
+        <span class="incident-details-header">
+              Final Narratives published by NTSB
+          </span>
+        <span class="incident-details-content">
+              <p class="no-text-transform">{{idp.idp_finalNarrative}}</p>
+          </span>
+        <span class="incident-details-header">
+              Preliminary Narratives published by NTSB
+          </span>
+        <span class="incident-details-content">
+              <p class="no-text-transform">{{idp.idp_preliminaryNarrative}}</p>
+          </span>
+      </div>
+      <div class="col-md-3">
+        <!-- Related items -->
+        <span class="incident-details-header">
+              Related Incidents
+          </span>
+        <span class="incident-details-content">
+              <div class="related-incident" ng-repeat="relatedIncident in idp.relatedIncidents">
+                  An accident happened on <strong>{{relatedIncident.date}}</strong>, in <strong>{{relatedIncident.loc}}</strong> caused <strong>{{relatedIncident.inj}}</strong> people hurt.
+                  <p>
+                      <button type="button" class="btn btn-xs btn-primary view-related-incident-detail" ng-click="idp.refreshContent(relatedIncident.ev_id)">
+                          View Detail <span class="glyphicon glyphicon-search"></span>
+                      </button>
+                  </p>
+              </div>
+          </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+<div class="pref-toggle" ng-click="vm.collapse()">
+   <span class="glyphicon {{vm.toggleIcon}}" aria-hidden="true"></span>
+</div>
+<div id="panel" ng-init="vm.init()">
+   <div class="row">
+      <div class="col-md-2">
+         <span class="control-header">Summary</span>
+         <span class="control-content">
+            <p><span class="count">{{vm.incidentsCount}}</span> INCIDENTS</p>
+            <p><span class="count">{{vm.casualtiesCount}}</span> CASUALTIES</p>
+         </span>
+      </div>
+      <div class="col-md-4">
+         <span class="control-header">Location Search</span>
+         <div class="form-group">
+            <input places-auto-complete placeholder="Enter a location" ng-model="vm.address" on-place-changed="vm.placeChanged()" />
+         </div>
+         <span class="control-header">Visualization Legend</span>
+         <div class="form-group" id="legend">
+            Causalties
+            <div class="row">
+                <div class="level casualtyLevel casualtyLevel1">
+                    &lt;10
+                </div>
+                <div class="level casualtyLevel casualtyLevel2">
+                    &lt;25
+                </div>
+                <div class="level casualtyLevel casualtyLevel3">
+                    &lt;50
+                </div>
+                <div class="level casualtyLevel casualtyLevel4">
+                    &lt;75
+                </div>
+                <div class="level casualtyLevel casualtyLevel5">
+                    &lt;100
+                </div>
+                <div class="level casualtyLevel casualtyLevel6">
+                    &lt;150
+                </div>
+                <div class="level casualtyLevel casualtyLevel7">
+                    150+
+                </div>
+            </div>
+            Heatmap Distrubution
+            <div class="row">
+                <div class="level heatmapLevel">
+                    <left>&lt;&lt; sparse</left>
+                    <right>dense &gt;&gt;</right>
+                </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+             <span class="control-header">visualization preferences</span>
+             <span class="control-content">
+                <div class="row">
+                   <div class="col-md-6">
+                      <span class="control-content">
+                          <div class="row">
+                              <div class="col-md-5">
+                                  <p>
+                                     <label style="line-height: 2.2em;">View by</label>
+                                  </p>
+                              </div>
+                              <div class="col-md-7">
+                                  <div class="dropdown dropdown-dark">
+                                     <select ng-model="vm.modeId" ng-init="vm.modeId='1'" ng-options="mode.id as mode.name for mode in vm.viewModes" class="dropdown-select"></select>
+                                  </div>
+                              </div>
+                          </div>
+                         <hr />
+                         <p>
+                            <label>Display Heatmap</label>
+                            <switch id="enabled" name="enabled" ng-model="vm.showHeatmap" ng-init="vm.showHeatmap=true" ng-change="vm.changeHeatmapStatus(vm.showHeatmap)" class="green"></switch>
+                         </p>
+                         <p>
+                            <label>Display Marker</label>
+                            <switch id="enabled" name="enabled" ng-model="vm.showMarker" ng-init="vm.showMarker=false" ng-change="vm.changeMarkerStatus(vm.showMarker)" class="green"></switch>
+                         </p>
+                         <p>
+                            <label>Display Impact Circle</label>
+                            <switch id="enabled" name="enabled" ng-model="vm.showShape" ng-init="vm.showShape=false" ng-change="vm.changeShapeStatus(vm.showShape)" class="green"></switch>
+                         </p>
+                         <p>
+                            <label>Featured Incidents Only</label>
+                            <switch id="enabled" name="enabled" ng-model="vm.showFeatured" ng-init="vm.showFeatured=false" ng-change="vm.applyFeatureFilter(vm.showFeatured)" class="green"></switch>
+                         </p>
+                      </span>
+                   </div>
+                   <div class="col-md-5">
+                      <span class="control-content" id="year-filter" ng-if="vm.isYearModeEnabled">
+                         <p>
+                            <label class="special-header">Filter Criteria</label>
+                         </p>
+                         <p class="wrapper">
+                            <label class="special-label">Specify year below</label>
+                            <caution class="special-label">{{vm.invalidYearMessage}}</caution>
+                            <input ng-model="vm.selectedyear" ng-init="vm.selectedyear=2015" type="number" name="quantity" min="1960" max="2015" />
+                         </p>
+                      </span>
+                      <span class="control-content month-content" ng-if="vm.isMonthModeEnabled">
+                         <p>
+                            <label class="special-header">Filter Criteria</label>
+                         </p>
+                         <p class="wrapper">
+                            <label class="special-label">Specify period below</label>
+                            <caution class="special-label">{{vm.invalidYearMessage}}</caution>
+                            <caution class="special-label">{{vm.invalidMonthMessage}}</caution>
+                            <input ng-model="vm.selectedyear" class="multiple-selector" ng-init="vm.selectedyear=2015" type="number" name="quantity" min="1960" max="2015" />
+                            <input ng-model="vm.selectedmonth" class="multiple-selector" ng-init="vm.selectedmonth=1" type="number" name="quantity" min="1" max="12" />
+                         </p>
+                      </span>
+                      <span class="control-content range-content" ng-if="vm.isRangeModeEnabled">
+                          <p>
+                             <label class="special-header">Filter Criteria</label>
+                          </p>
+                          <p class="wrapper clearfix">
+                            <label class="special-label">Specify range below</label>
+                            <label class="special-label">FROM</label>
+                            <caution class="special-label">{{vm.invalidSDMessage}}</caution>
+                            <datepicker date-format="MMMM dd, yyyy" date-max-limit="{{vm.dateMaxLimit}}">
+                               <input ng-model="vm.selectedstartdate" class="date-selector" ng-change="vm.updateEDMaxLimit()" type="text" readonly="true"/>
+                            </datepicker>
+                            <label class="special-label">TO</label>
+                            <caution class="special-label">{{vm.invalidEDMessage}}</caution>
+                            <datepicker date-format="MMMM dd, yyyy" date-set="{{vm.selectedstartdate}}" date-max-limit="{{vm.enddateMaxLimit}}">
+                               <input ng-model="vm.selectedenddate" class="date-selector" type="text" readonly="true"/>
+                            </datepicker>
+                         </p>
+                      </span>
+                      <span class="control-content" id="date-content" ng-if="vm.isDateModeEnabled">
+                          <p>
+                             <label class="special-header">Filter Criteria</label>
+                          </p>
+                          <p class="wrapper clearfix">
+                            <label class="special-label">Specify date below</label>
+                            <caution class="special-label">{{vm.invalidDateMessage}}</caution>
+                            <datepicker date-format="MMMM dd, yyyy" date-max-limit="{{vm.dateMaxLimit}}">
+                               <input ng-model="vm.selecteddate" class="date-selector" type="text" readonly="true"/>
+                            </datepicker>
+                         </p>
+                      </span>
+                   </div>
+                   <div class="col-md-1">
+                      <span class="control-content text-align">
+                          <button type="button" class="btn btn-xs btn-primary" ng-click="vm.applyRender()">
+                              Apply <span class="glyphicon glyphicon-ok"></span>
+                          </button>
+                      </span>
+                   </div>
+                </div>
+             </span>
+      </div>
+   </div>
+   <div class="row version-info text-center">
+      AEROSAFE alpha
+   </div>
+</div>
